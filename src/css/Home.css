@@ -1,0 +1,269 @@
+/* ===== Global Styles ===== */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  margin: 0;
+  padding: 0;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #2563eb;
+}
+
+/* Buttons */
+.button-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button-primary:hover {
+  background-color: #1e40af;
+}
+
+.button-outline {
+  background: white;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-outline:hover {
+  background: #2563eb;
+  color: white;
+}
+
+
+/* ===== Header ===== */
+.header {
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #374151;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #2563eb;
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+  background: linear-gradient(to right, #2563eb, #7c3aed);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #bfdbfe;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Search Bar */
+.search-bar {
+  max-width: 900px;
+  margin: 2rem auto 0;
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+  padding: 0.75rem 2.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #2563eb;
+}
+
+/* ===== Activity Cards ===== */
+.activity-card {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.activity-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  position: relative;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 999px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.discount-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: #ef4444;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.activity-content {
+  padding: 1rem;
+}
+
+.activity-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #111827;
+}
+
+.activity-title:hover {
+  color: #2563eb;
+}
+
+.activity-location {
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+}
+
+.activity-rating {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.activity-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ===== Categories ===== */
+.category-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.category-button:hover {
+  border-color: #2563eb;
+}
+
+.category-button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+/* ===== Sidebar Filters ===== */
+.filter-sidebar {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: #111827;
+  color: #d1d5db;
+  padding: 3rem 1rem;
+}
+
+.footer h3,
+.footer h4 {
+  color: white;
+  font-weight: 700;
+}
+
+.footer-links a {
+  color: #d1d5db;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1f2937;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+}

@@ -1,0 +1,49 @@
+/* App.css */
+
+/* Full screen height + flex center */
+.min-h-screen {
+    min-height: 100vh;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .bg-gray-100 {
+    background-color: #f7fafc;
+  }
+  
+  /* Loader animation */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Loader circle style */
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  .h-32 { height: 8rem; }
+  .w-32 { width: 8rem; }
+  
+  .border-b-2 {
+    border-bottom-width: 2px;
+  }
+  
+  .border-blue-600 {
+    border-color: #2563eb;
+  }
+  
