@@ -15,7 +15,7 @@ import Careers from './footercomponents/Careers';
 import Press from './footercomponents/Press';
 import Contact from './footercomponents/Contact';
 import HelpCenter from './footercomponents/HelpCenter';
-import Safety from './footercomponents/safety';
+import Safety from './footercomponents/Safety';
 import TermsOfService from './footercomponents/TermsOfService';
 import './css/App.css';
 
