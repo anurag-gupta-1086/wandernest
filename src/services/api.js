@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://travelbackend2-e600b789ab8c.herokuapp.com/api';
 
 const api = axios.create({
   baseURL: API_URL,
