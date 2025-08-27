@@ -9,7 +9,6 @@ import MyBookings from './components/MyBookings';
 import AdminPanel from './components/AdminPanel';
 import ActivityDetail from './components/ActivityDetail';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import AboutUs from './footercomponents/AboutUs';
 import Careers from './footercomponents/Careers';
 import Press from './footercomponents/Press';
@@ -82,7 +81,6 @@ function App() {
               }
             />
           </Routes>
-          <Footer />
         </div>
       </Router>
     </AuthProvider>
