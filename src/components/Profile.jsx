@@ -9,17 +9,9 @@ const Profile = () => {
   const [profile, setProfile] = useState(null); 
   const [loading, setLoading] = useState(true);
 
-  // Fetch user data from backend using token
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // const token = localStorage.getItem("token"); 
-        // if (!token) {
-        //   console.error("No token found in localStorage");
-        //   return;
-        // }
-        //console.log("token : ", token);
-
         const response = await userAPI.getProfile();
         console.log("response : ", response);
         setProfile(response.data);

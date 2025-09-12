@@ -33,9 +33,6 @@ const Header = () => {
             <>
               <Link to="/bookings" className="nav-link">My Bookings</Link>
               <Link to="/profile" className="nav-link">{user?.user?.name}</Link>
-              {user?.roles?.includes('ROLE_ADMIN') && (
-                <Link to="/admin" className="nav-link">Admin</Link>
-              )}
               <button onClick={logout} className="nav-link">Logout</button>
             </>
           ) : (
@@ -69,11 +66,6 @@ const Header = () => {
                 <Link to="/profile" className="nav-link" onClick={closeMobileMenu}>
                   {user?.user?.name}
                 </Link>
-                {user?.roles?.includes('ROLE_ADMIN') && (
-                  <Link to="/admin" className="nav-link" onClick={closeMobileMenu}>
-                    Admin
-                  </Link>
-                )}
                 <button 
                   onClick={() => { logout(); closeMobileMenu(); }} 
                   className="nav-link"

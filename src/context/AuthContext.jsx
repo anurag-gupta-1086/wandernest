@@ -29,7 +29,6 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await authAPI.login(credentials);
       const { accessToken, ...userData } = response.data;
-      console.log("access token : ", accessToken)
       
       localStorage.setItem('token', accessToken);
       localStorage.setItem('user', JSON.stringify(userData));
@@ -49,11 +48,6 @@ export const AuthProvider = ({ children }) => {
   try {
     const response = await authAPI.register(userData);
     const { accessToken, ...registeredUser } = response.data;
-
-    // Store token and user info in localStorage
-    // localStorage.setItem('token', accessToken);
-    // localStorage.setItem('user', JSON.stringify(registeredUser));
-    // setUser(registeredUser); // assuming you have setUser from context/state
 
     return { success: true };
   } catch (error) {
@@ -77,8 +71,7 @@ export const AuthProvider = ({ children }) => {
     register,
     logout,
     loading,
-    isAuthenticated: !!user,
-    isAdmin: user?.roles?.includes('ROLE_ADMIN'),
+    isAuthenticated: !!user
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

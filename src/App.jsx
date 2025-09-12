@@ -6,20 +6,12 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import MyBookings from './components/MyBookings';
-import AdminPanel from './components/AdminPanel';
 import ActivityDetail from './components/ActivityDetail';
 import Header from './components/Header';
-import AboutUs from './footercomponents/AboutUs';
-import Careers from './footercomponents/Careers';
-import Press from './footercomponents/Press';
-import Contact from './footercomponents/Contact';
-import HelpCenter from './footercomponents/HelpCenter';
-import Safety from './footercomponents/Safety';
-import TermsOfService from './footercomponents/TermsOfService';
 import './css/App.css';
 
-const ProtectedRoute = ({ children, adminOnly = false }) => {
-  const { isAuthenticated, isAdmin, loading } = useAuth();
+const ProtectedRoute = ({ children}) => {
+  const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
     return <div className="flex justify-center items-center min-h-screen">
@@ -29,10 +21,6 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
-  }
-
-  if (adminOnly && !isAdmin) {
-    return <Navigate to="/" />;
   }
 
   return children;
@@ -49,13 +37,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/activity/:id" element={<ActivityDetail />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/press" element={<Press />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/help" element={<HelpCenter />} />
-            <Route path="/safety" element={<Safety />} />
-            <Route path="/terms" element={<TermsOfService />} />
             <Route
               path="/profile"
               element={
@@ -69,14 +50,6 @@ function App() {
               element={
                 <ProtectedRoute>
                   <MyBookings />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin"
-              element={
-                <ProtectedRoute adminOnly={true}>
-                  <AdminPanel />
                 </ProtectedRoute>
               }
             />

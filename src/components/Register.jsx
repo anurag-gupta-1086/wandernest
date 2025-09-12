@@ -27,28 +27,6 @@ const Register = () => {
     setError('');
     setSuccess('');
     console.log("formdata : ", formData);
-    /*
-
-    email
-: 
-"anuraggupta3468@gmail.com"
-firstName
-: 
-"Anurag"
-lastName
-: 
-"Gupta"
-password
-: 
-"123456"
-phoneNumber
-: 
-"09896426539"
-username
-: 
-"anuraggupta1086"
-
-    */
 
     const result = await register(formData);
 

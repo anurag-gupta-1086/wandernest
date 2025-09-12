@@ -57,7 +57,6 @@ const ActivityDetail = () => {
       const response = await bookingAPI.create(bookingData);
 
       alert("Booking successful!");
-      console.log("Booking response:", response.data);
     } catch (error) {
       console.error("Error creating booking:", error);
       alert("Booking failed. Please try again.");
@@ -76,6 +75,17 @@ const ActivityDetail = () => {
             alt={activity.title}
             className="main-image"
           />
+          <p style={{ fontSize: '0.7rem', color: '#6b7280', marginTop: '4px' }}>
+            Photo from{" "}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "underline" }}
+            >
+              Unsplash
+            </a>
+          </p>
         </div>
 
         {/* Info */}

@@ -45,11 +45,7 @@ export const activityAPI = {
   getAll: (params) => api.get('/activities', { params }),
   getById: (id) => api.get(`/activities/${id}`),
   search: (params) => api.get('/activities/search', { params }),
-  getFeatured: () => api.get('/activities/featured'),
-  getByLocation: (location) => api.get(`/activities/location/${location}`),
-  create: (activityData) => api.post('/activities', activityData),
-  update: (id, activityData) => api.put(`/activities/${id}`, activityData),
-  delete: (id) => api.delete(`/activities/${id}`),
+  getFeatured: () => api.get('/activities/featured')
 };
 
 // Booking services
@@ -57,9 +53,7 @@ export const bookingAPI = {
   create: (bookingData) => api.post('/bookings', bookingData),
   getUserBookings: () => api.get('/bookings'),
   getById: (id) => api.get(`/bookings/${id}`),
-  cancel: (id) => api.put(`/bookings/${id}/cancel`),
-  getAllBookings: () => api.get('/bookings/admin/all'),
-  updateStatus: (id, status) => api.put(`/bookings/admin/${id}/status`, null, { params: { status } }),
+  cancel: (id) => api.put(`/bookings/${id}/cancel`)
 };
 
 // User services

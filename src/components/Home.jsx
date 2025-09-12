@@ -16,14 +16,11 @@ const Home = () => {
   const [featuredActivities, setFeaturedActivities] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [favorites, setFavorites] = useState(new Set());
   const [selectedCategory, setSelectedCategory] = useState('');
   const [priceRange, setPriceRange] = useState([0, 500]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
 
   const categories = [
     { id: '', name: 'All Categories', icon: '🏛️' },
@@ -41,13 +38,12 @@ const Home = () => {
 
   useEffect(() => {
     searchActivities();
-  }, [searchTerm, selectedLocation, selectedCategory, priceRange, currentPage]);
+  }, [searchTerm, selectedLocation, selectedCategory, priceRange]);
 
   const loadActivities = async () => {
     setLoading(true);
     try {
       const response = await activityAPI.getAll({
-        page: 0,
         size: 20,
         sortBy: 'createdAt',
         sortDir: 'desc'
@@ -55,8 +51,6 @@ const Home = () => {
       
       setActivities(response.data);
       setFilteredActivities(response.data);
-  
-      setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error('Error loading activities:', error);
     } finally {
@@ -77,7 +71,6 @@ const Home = () => {
     setLoading(true);
     try {
       const params = {
-        page: currentPage,
         size: 12,
         sortBy: 'createdAt',
         sortDir: 'desc'
@@ -94,7 +87,6 @@ const Home = () => {
       const response = await activityAPI.search(params);
       
       setFilteredActivities(response.data);
-      setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error('Error searching activities:', error);
       setFilteredActivities([]);
@@ -102,30 +94,6 @@ const Home = () => {
       setLoading(false);
     }
   };
-
-  const toggleFavorite = (id) => {
-    const newFavorites = new Set(favorites);
-    if (newFavorites.has(id)) {
-      newFavorites.delete(id);
-    } else {
-      newFavorites.add(id);
-    }
-    setFavorites(newFavorites);
-  };
-
-  const handleBookNow = (activity) => {
-    if (!isAuthenticated) {
-      alert('Please login to book an activity');
-      return;
-    }
-    setSelectedActivity(activity);
-    setIsBookingModalOpen(true);
-  };
-
-  const handleBookingComplete = (booking) => {
-    console.log('Booking completed:', booking);
-  };
-  console.log("filtered activities : ", filteredActivities);
 
   const ActivityCard = ({ activity }) => (
     <div className="activity-card">
@@ -137,9 +105,32 @@ const Home = () => {
         />
         {activity.originalPrice > activity.price && (
           <div className="discount-badge">
-            Save ${(activity.originalPrice - activity.price).toFixed(2)}
+            Save £{(activity.originalPrice - activity.price).toFixed(2)}
           </div>
         )}
+        <p
+          style={{
+            position: "absolute",
+            bottom: "4px",
+            right: "6px",
+            fontSize: "0.6rem",
+            color: "rgba(255,255,255,0.8)",
+            backgroundColor: "rgba(0,0,0,0.4)",
+            padding: "2px 4px",
+            borderRadius: "4px",
+            margin: 0
+          }}
+        >
+          Photo from{" "}
+          <a
+            href="https://unsplash.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#fff", textDecoration: "underline" }}
+          >
+            Unsplash
+          </a>
+        </p>
       </div>
       
       <div className="activity-content">
@@ -180,7 +171,7 @@ const Home = () => {
                 ${activity.originalPrice}
               </span>
             )}
-            <span className="activity-price">${activity.price}</span>
+            <span className="activity-price">£{activity.price}</span>
             <span style={{ fontSize: '0.875rem', color: '#6b7280', marginLeft: '4px' }}>per person</span>
           </div>
           <Link to={`/activity/${activity.id}`}>
@@ -258,7 +249,6 @@ const Home = () => {
               key={category.id}
               onClick={() => {
                 setSelectedCategory(category.id);
-                setCurrentPage(0);
               }}
               className={`category-button ${selectedCategory === category.id ? 'active' : ''}`}
             >
@@ -280,7 +270,6 @@ const Home = () => {
               value={priceRange[1]}
               onChange={(e) => {
                 setPriceRange([priceRange[0], parseInt(e.target.value)]);
-                setCurrentPage(0);
               }}
               style={{ width: '100%' }}
             />
@@ -314,14 +303,6 @@ const Home = () => {
           </div>
         </div>
       </main>
-
-      {/* Booking Modal */}
-      <BookingModal
-        activity={selectedActivity}
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-        onBookingComplete={handleBookingComplete}
-      />
     </div>
   );
 };

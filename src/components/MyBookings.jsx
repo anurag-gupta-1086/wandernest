@@ -16,10 +16,8 @@ const MyBookings = () => {
       try {
         const response = await bookingAPI.getUserBookings();
         const bookingData = response.data;
-        console.log("booking data : ", bookingData);
 
         const today = new Date().toISOString().split("T")[0];
-        console.log("today : ", today);
         const upcoming = bookingData.filter(b => new Date(b.selected_date).toISOString().split("T")[0] >= today && b.status == 'confirmed');
         const past = bookingData.filter(b => new Date(b.selected_date).toISOString().split("T")[0] < today || b.status == 'cancelled');
 
